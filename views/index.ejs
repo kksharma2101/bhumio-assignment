@@ -4,18 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <style>
+        .container {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .formContainer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            border-bottom: solid black 2px;
+        }
+
+        #input {
+            margin-top: 20px;
+            padding: 20px 10px;
+            background-color: #dee0fc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: blue;
+            padding: 5px 10px;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        textarea {
+            width: auto;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+    <title>Bhumio-Assignment</title>
 </head>
 
 <body>
-    <form action="/imagetotext" method="post" enctype="multipart/form-data">
-        <label for="post">image to text</label>
-        <input type="file" name="file" accept="image/*" id="input">
-        <button>convert</button>
-    </form>
-    <textarea cols="30" rows="30">
+    <div class="container">
+        <form action="/imagetotext" class="formContainer" method="post" enctype="multipart/form-data">
+            <label for="post">Upload Image</label>
+            <input type="file" name="file" accept="image/*" id="input">
+            <button>Convert</button>
+        </form>
+        <textarea cols="40" rows="10">
         <%=data%>
      </textarea>
+    </div>
 </body>
 
 </html>

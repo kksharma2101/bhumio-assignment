@@ -1,5 +1,4 @@
 require("dotenv").config();
-const { configDotenv } = require("dotenv");
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
@@ -29,14 +28,13 @@ app.get("/", (req, res) => {
   res.render("index", { data: "" });
 });
 
-app.post("/imagetotext", upload.single("file"), (req, res) => {
-  (async () => {
-    const worker = await createWorker("eng");
-    const ret = await worker.recognize(req.file.path);
-    // console.log(ret.data.text);
-    res.render("index", { data: ret.data.text });
-    await worker.terminate();
-  })();
+app.post("/imagetotext", upload.single("file"), async (req, res) => {
+  // (async () => {
+  const worker = await createWorker("eng");
+  const ret = await worker.recognize(req.file.path);
+  // console.log(ret.data.text);
+  res.render("index", { data: ret.data.text });
+  await worker.terminate();
 });
 
 app.listen(PORT, () => {
